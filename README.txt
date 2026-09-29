@@ -1,7 +1,7 @@
-LA JUCA - WEBSITE
-==================
-1. Sube TODO el contenido de esta carpeta a public_html (o la raíz web de tu hosting).
-2. index.html debe quedar en la raíz.
-3. El reproductor Caster.fm ya está configurado con el publicToken proporcionado.
-4. Edita index.html para cambiar programación, email y enlaces sociales.
-5. No coloques tu contraseña de transmisión en ningún archivo público.
+LA JUCA PWA
+
+Sube el CONTENIDO de esta carpeta a public_html.
+Requiere HTTPS para PWA/Service Worker.
+Android/Chrome/Edge: botón Instalar app cuando el navegador lo permita.
+iPhone/iPad: Safari > Compartir > Agregar a pantalla de inicio; el botón muestra esa guía.
+El sitio base se cachea, pero el streaming de Caster.fm requiere Internet.
