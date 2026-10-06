@@ -328,7 +328,6 @@ body {
 }
 
 .radio-toggle:focus-visible,
-.player-external:focus-visible,
 .player-details summary:focus-visible {
   outline: 3px solid var(--juca-cyan);
   outline-offset: 4px;
@@ -406,36 +405,6 @@ body {
   color: #a7a8bc;
   font-size: .76rem;
   line-height: 1.55;
-}
-
-.player-external {
-  display: inline-flex;
-  flex: 0 0 auto;
-  align-items: center;
-  gap: 7px;
-  padding: 9px 12px;
-  border: 1px solid rgba(40, 229, 255, .24);
-  border-radius: 999px;
-  color: #c7f8ff;
-  font-size: .76rem;
-  font-weight: 750;
-  transition: background .2s ease, border-color .2s ease;
-}
-
-.player-external:hover {
-  border-color: rgba(40, 229, 255, .55);
-  background: rgba(40, 229, 255, .08);
-  color: #fff;
-}
-
-.player-external svg {
-  width: 14px;
-  height: 14px;
-  fill: none;
-  stroke: currentColor;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-width: 1.5;
 }
 
 .player-details {

@@ -104,26 +104,22 @@
             <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
           </button>
         </div>
-        <audio id="radioAudio" class="radio-audio" src="http://uk15freenew.listen2myradio.com:36958/stream" type="audio/aac" playsinline preload="none" aria-label="Audio en vivo de La Juca">
-          Tu navegador no puede reproducir audio AAC. <a href="http://uk15freenew.listen2myradio.com:36958/stream">Abrir la señal de La Juca</a>.
+        <audio id="radioAudio" class="radio-audio" src="http://uk24freenew.listen2myradio.com:6915/stream" playsinline preload="none" aria-label="Audio en vivo de La Juca">
+          Tu navegador no puede reproducir el audio en vivo de La Juca.
         </audio>
         <div class="player-footer">
-          <p class="player-note mb-0">Si no inicia, toca reproducir. Algunos navegadores no soportan la señal AAC y la abrirán en otra pestaña.</p>
+          <p class="player-note mb-0">Toca reproducir para escuchar La Juca. La señal se reproduce aquí mismo.</p>
           <div class="player-controls">
             <label class="player-volume" for="volumeControl">
               <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/></svg>
               <span class="visually-hidden">Volumen</span>
               <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volumen">
             </label>
-            <a class="player-external" href="http://uk15freenew.listen2myradio.com:36958/stream" target="_blank" rel="noopener noreferrer" aria-label="Abrir la señal en otra pestaña">
-              Abrir señal
-              <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3.75A.75.75 0 0 0 3 3.75v8.5c0 .41.34.75.75.75h8.5a.75.75 0 0 0 .75-.75V10M9 2h5v5m-.25-4.75L7 9"/></svg>
-            </a>
           </div>
         </div>
         <details class="player-details">
           <summary>¿Por qué no aparecen la canción y su carátula?</summary>
-          <p>El servidor actual no permite leer sus metadatos desde esta página y no proporciona carátulas. Para mostrarlos hace falta habilitar una API o un proxy HTTPS.</p>
+          <p>Icecast publica la canción actual en status.xsl, pero no habilita CORS para que GitHub Pages la lea. La señal también es HTTP y puede ser bloqueada por navegadores en una página HTTPS. Para reproducirla aquí y leer sus metadatos hace falta un relay HTTPS; las carátulas requieren además una fuente de imágenes.</p>
         </details>
       </div>
     </div>

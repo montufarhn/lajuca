@@ -31,13 +31,16 @@ const playerStatus = document.getElementById("playerStatus");
 const radioToggle = document.getElementById("radioToggle");
 const radioPlayer = radioToggle.closest(".radio-player");
 const volumeControl = document.getElementById("volumeControl");
-const radioStreamUrl = "http://uk15freenew.listen2myradio.com:36958/stream";
 
-function openRadioStream() {
-  if (location.protocol === "file:") {
-    playerStatus.textContent = "Abre esta página desde un servidor web o usa la opción de abrir la señal.";
-  }
-  window.open(radioStreamUrl, "_blank", "noopener,noreferrer");
+function isInsecureStreamOnSecurePage() {
+  const configuredStreamUrl = radioAudio.getAttribute("src") || radioAudio.src;
+  return location.protocol === "https:" && new URL(configuredStreamUrl, location.href).protocol === "http:";
+}
+
+function showStreamError() {
+  playerStatus.textContent = isInsecureStreamOnSecurePage()
+    ? "El navegador exige HTTPS en esta página, pero la señal solo ofrece HTTP. Hace falta un relay HTTPS para reproducir aquí."
+    : "No se pudo reproducir la señal MP3. Comprueba tu conexión e inténtalo de nuevo.";
 }
 
 function updatePlayerState(isPlaying) {
@@ -67,26 +70,12 @@ radioAudio.addEventListener("pause", () => {
 
 radioAudio.addEventListener("error", () => {
   updatePlayerState(false);
-  const error = radioAudio.error;
-  if (error && (
-    error.code === MediaError.MEDIA_ERR_DECODE ||
-    error.code === MediaError.MEDIA_ERR_SRC_NOT_SUPPORTED
-  )) {
-    playerStatus.textContent = "Este navegador no admite el formato AAC de la señal. Se abrirá la radio en otra pestaña.";
-    openRadioStream();
-  } else {
-    playerStatus.textContent = "No se pudo cargar la señal. Comprueba la conexión e inténtalo de nuevo.";
-  }
+  showStreamError();
 });
 
 radioToggle.addEventListener("click", async () => {
   if (!radioAudio.paused) {
     radioAudio.pause();
-    return;
-  }
-
-  if (location.protocol === "file:") {
-    openRadioStream();
     return;
   }
 
@@ -99,11 +88,8 @@ radioToggle.addEventListener("click", async () => {
     const normalizedName = error && error.name ? error.name : "";
     if (normalizedName === "NotAllowedError") {
       playerStatus.textContent = "El navegador bloqueó el audio. Vuelve a tocar reproducir.";
-    } else if (normalizedName === "NotSupportedError" || normalizedName === "AbortError") {
-      playerStatus.textContent = "Este navegador no admite esta señal AAC. Se abrirá la radio en otra pestaña.";
-      openRadioStream();
     } else {
-      playerStatus.textContent = "No se pudo iniciar la señal. Inténtalo de nuevo.";
+      showStreamError();
     }
   }
 });
