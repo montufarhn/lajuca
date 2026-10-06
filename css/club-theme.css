@@ -1,0 +1,215 @@
+:root {
+  --juca-pink: #ff2d75;
+  --juca-violet: #a855f7;
+  --juca-cyan: #28e5ff;
+  --juca-ink: #090912;
+  --juca-panel: #11111d;
+}
+
+body {
+  background: var(--juca-ink);
+}
+
+.app-nav {
+  background: rgba(9, 9, 18, .92);
+  border-bottom-color: rgba(40, 229, 255, .14);
+}
+
+.navbar-nav .nav-link {
+  transition: color .2s ease, opacity .2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--juca-cyan);
+}
+
+.btn-juca {
+  background: linear-gradient(105deg, var(--juca-pink), #e51dba 55%, var(--juca-violet));
+  border-color: transparent;
+  box-shadow: 0 0 24px rgba(255, 45, 117, .24);
+}
+
+.btn-juca:hover {
+  background: linear-gradient(105deg, #ff5590, #ed43ca 55%, #bd78ff);
+  box-shadow: 0 0 30px rgba(255, 45, 117, .42);
+}
+
+.btn-ghost {
+  border-color: rgba(40, 229, 255, .42);
+}
+
+.btn-ghost:hover {
+  border-color: var(--juca-cyan);
+  box-shadow: 0 0 22px rgba(40, 229, 255, .12);
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background:
+    linear-gradient(90deg, rgba(9, 9, 18, .76), rgba(9, 9, 18, .58) 49%, rgba(9, 9, 18, .52)),
+    linear-gradient(0deg, rgba(9, 9, 18, .52), transparent 65%),
+    url("../assets/urban-graffiti-street.jpg") center 52% / cover no-repeat,
+    #0b0b16;
+}
+
+.hero::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  pointer-events: none;
+}
+
+.live-pill {
+  color: var(--juca-cyan);
+}
+
+.live-pill i {
+  background: var(--juca-pink);
+  box-shadow: 0 0 8px var(--juca-pink), 0 0 20px var(--juca-pink);
+}
+
+.hero h1 {
+  text-shadow: 0 4px 36px rgba(0, 0, 0, .25);
+}
+
+.hero h1 span {
+  background: linear-gradient(90deg, var(--juca-pink), #ff54c8 55%, var(--juca-cyan));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero .lead {
+  color: #c4c5d5;
+}
+
+.hero-meta span {
+  border-color: rgba(168, 85, 247, .25);
+  background: rgba(168, 85, 247, .08);
+  color: #e4d8f7;
+}
+
+.hero-logo {
+  filter: drop-shadow(0 0 28px rgba(255, 45, 117, .3))
+    drop-shadow(0 0 58px rgba(168, 85, 247, .22));
+}
+
+.brand-strip {
+  background: #0b0b15;
+  border-color: rgba(168, 85, 247, .15);
+}
+
+.brand-stat {
+  border-color: rgba(255, 255, 255, .08);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .035), rgba(168, 85, 247, .035));
+}
+
+.brand-stat strong {
+  background: linear-gradient(90deg, var(--juca-cyan), #c17aff);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-stat span {
+  color: #a7a8bc;
+}
+
+.about,
+.section-alt {
+  background:
+    radial-gradient(ellipse at 10% 50%, rgba(168, 85, 247, .055), transparent 42%),
+    #0c0c16;
+}
+
+.section-head > span,
+.contact span {
+  color: var(--juca-cyan);
+}
+
+.section-head h2,
+.contact h2 {
+  letter-spacing: -.035em;
+}
+
+.feature-card,
+.show-card {
+  position: relative;
+  overflow: hidden;
+  border-color: rgba(168, 85, 247, .2);
+  background: linear-gradient(145deg, rgba(255, 255, 255, .035), rgba(168, 85, 247, .035));
+}
+
+.feature-card::before,
+.show-card::before {
+  position: absolute;
+  top: 0;
+  left: 26px;
+  width: 54px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--juca-pink), var(--juca-cyan));
+  content: "";
+}
+
+.feature-icon {
+  background: linear-gradient(135deg, var(--juca-pink), var(--juca-violet) 65%, #4338ca);
+  box-shadow: 0 0 25px rgba(168, 85, 247, .22);
+}
+
+.radio-card {
+  border-color: rgba(168, 85, 247, .23);
+  background: linear-gradient(145deg, #141421, #0e0e18);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, .48), 0 0 36px rgba(168, 85, 247, .08);
+}
+
+.radio-head small,
+.show-card b {
+  color: var(--juca-cyan);
+  letter-spacing: .09em;
+}
+
+.radio-head img {
+  border: 1px solid rgba(255, 45, 117, .22);
+  box-shadow: 0 0 24px rgba(255, 45, 117, .12);
+}
+
+.online-dot {
+  background: var(--juca-cyan);
+  box-shadow: 0 0 8px var(--juca-cyan), 0 0 20px rgba(40, 229, 255, .55);
+}
+
+.show-card:hover {
+  border-color: rgba(40, 229, 255, .45);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, .28), 0 0 24px rgba(40, 229, 255, .08);
+}
+
+.contact {
+  background:
+    radial-gradient(ellipse at 10% 100%, rgba(255, 45, 117, .2), transparent 48%),
+    radial-gradient(ellipse at 90% 0%, rgba(40, 229, 255, .11), transparent 40%),
+    #110c19;
+  border-top: 1px solid rgba(255, 45, 117, .16);
+  border-bottom: 1px solid rgba(40, 229, 255, .12);
+}
+
+.contact .btn-outline-light:hover {
+  background: var(--juca-cyan);
+  border-color: var(--juca-cyan);
+  color: #080912;
+}
+
+.footer {
+  background: #08080f;
+  border-color: rgba(168, 85, 247, .15);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}

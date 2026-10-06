@@ -1,13 +1,13 @@
 {
   "name": "La Juca Radio",
   "short_name": "La Juca",
-  "description": "La Juca - Radio online en vivo.",
+  "description": "La Juca: EDM y urbano en rotación continua, sin anuncios ni interrupciones.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#08090d",
-  "theme_color": "#e81e4d",
+  "background_color": "#090912",
+  "theme_color": "#090912",
   "icons": [
     {
       "src": "assets/icons/icon-192.png",
