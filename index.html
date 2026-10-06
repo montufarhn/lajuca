@@ -81,47 +81,17 @@
         <p>Conéctate a la señal en vivo y vive la energía de La Juca en cualquier momento.</p>
       </div>
       <div class="radio-card mx-auto">
-        <div class="radio-player">
-          <div class="player-artwork">
-            <img src="assets/logo-la-juca.png" alt="Logo de la emisora La Juca">
-            <span class="artwork-glow"></span>
-          </div>
-          <div class="player-main">
-            <div class="player-topline">
-              <span class="live-label"><i></i> EN VIVO</span>
-              <span class="player-frequency">24/7 · EDM + URBANO</span>
-            </div>
-            <h3>La Juca</h3>
-            <p id="playerStatus" class="player-status" role="status" aria-live="polite">Preparando la señal…</p>
-            <div class="player-wave" aria-hidden="true">
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
-              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        <div class="caster-wrap">
+          <div class="caster-shell">
+            <div data-type="newStreamPlayer" data-publicToken="df0f3c8e-a2e5-4857-92cc-63e767c8fbe0" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed">
+              <a href="https://www.caster.fm">Shoutcast Hosting</a>
+              <a href="https://www.caster.fm">Stream Hosting</a>
+              <a href="https://www.caster.fm">Radio Server Hosting</a>
             </div>
           </div>
-          <button id="radioToggle" class="radio-toggle" type="button" aria-label="Reproducir La Juca" aria-pressed="false">
-            <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.8c0-.8.9-1.3 1.6-.9l10 6.2a1.1 1.1 0 0 1 0 1.8l-10 6.2c-.7.4-1.6-.1-1.6-.9V5.8Z" fill="currentColor"/></svg>
-            <svg class="pause-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>
-          </button>
         </div>
-        <audio id="radioAudio" class="radio-audio" src="http://uk24freenew.listen2myradio.com:6915/stream" playsinline preload="none" aria-label="Audio en vivo de La Juca">
-          Tu navegador no puede reproducir el audio en vivo de La Juca.
-        </audio>
-        <div class="player-footer">
-          <p class="player-note mb-0">Toca reproducir para escuchar La Juca. La señal se reproduce aquí mismo.</p>
-          <div class="player-controls">
-            <label class="player-volume" for="volumeControl">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Zm4 4a5 5 0 0 1 0 6m3-9a9 9 0 0 1 0 12"/></svg>
-              <span class="visually-hidden">Volumen</span>
-              <input id="volumeControl" type="range" min="0" max="1" step="0.01" value="1" aria-label="Volumen">
-            </label>
-          </div>
-        </div>
-        <details class="player-details">
-          <summary>¿Por qué no aparecen la canción y su carátula?</summary>
-          <p>Icecast publica la canción actual en status.xsl, pero no habilita CORS para que GitHub Pages la lea. La señal también es HTTP y puede ser bloqueada por navegadores en una página HTTPS. Para reproducirla aquí y leer sus metadatos hace falta un relay HTTPS; las carátulas requieren además una fuente de imágenes.</p>
-        </details>
       </div>
+      <script src="https://cdn.cloud.caster.fm//widgets/embed.js"></script>
     </div>
   </section>
 
