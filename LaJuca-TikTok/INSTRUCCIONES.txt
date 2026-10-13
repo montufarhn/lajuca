@@ -1,0 +1,17 @@
+LA JUCA TIKTOK LIVE v2
+======================
+1. Descomprime el ZIP en una carpeta, por ejemplo C:\LaJuca\TikTok.
+2. Confirma que existe C:\LaJuca\metadata.txt y que contiene: Artista - Cancion
+3. En esa carpeta ejecuta: py server.py  (o python server.py)
+4. En el navegador abre: http://127.0.0.1:8765
+5. Para comprobar lectura: http://127.0.0.1:8765/api/nowplaying
+6. OBS/TikTok LIVE Studio: fuente de navegador con URL http://127.0.0.1:8765, ancho 1080, alto 1920.
+7. El audio se captura por separado; esta pagina no tiene reproductor.
+
+IMPORTANTE: NO abras index.html haciendo doble clic; debe servirse desde server.py.
+Si otro programa usa el puerto 8765, cierralo antes de iniciar la version nueva.
+Si los metadatos estan en otro archivo, configura variable de entorno LAJUCA_METADATA.
+PowerShell ejemplo: $env:LAJUCA_METADATA='D:\Radio\metadata.txt'; py server.py
+La caratula se busca en iTunes y, si no hay resultado, MusicBrainz.
+Para canciones underground/remixes puede no haber caratula en esos catalogos.
+Necesitas internet para caratulas y el fondo de graffiti.
