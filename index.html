@@ -3,7 +3,7 @@
 <meta name="theme-color" content="#09090b"><meta name="description" content="La Juca: EDM, urbano, salsa, merengue, bachata y más. Escucha nuestra mezcla en vivo 24/7.">
 <meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><meta name="apple-mobile-web-app-title" content="La Juca">
 <title>La Juca | Radio Online</title><link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"><link rel="icon" href="assets/icons/icon-192.png">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/club-theme.css"></head><body>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"><link rel="stylesheet" href="css/style.css"><link rel="stylesheet" href="css/club-theme.css"><link rel="stylesheet" href="css/player.css"></head><body>
 <nav class="navbar navbar-expand-md navbar-dark sticky-top app-nav"><div class="container"><a class="navbar-brand" href="#inicio"><img src="assets/logo-la-juca.png" alt="La Juca"></a><div class="d-flex gap-2 order-md-3"><button id="installBtn" class="btn btn-juca btn-sm d-none">Instalar app</button><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menu" aria-label="Menú"><span class="navbar-toggler-icon"></span></button></div><div class="collapse navbar-collapse" id="menu"><div class="navbar-nav ms-auto me-md-3"><a class="nav-link" href="#inicio">Inicio</a><a class="nav-link" href="#en-vivo">En vivo</a><a class="nav-link" href="#musica">Nuestra música</a><a class="nav-link" href="#contacto">Contacto</a></div></div></div></nav>
 <main>
   <section id="inicio" class="hero d-flex align-items-center">
@@ -89,6 +89,14 @@
         <p>Conéctate a la señal en vivo y vive la energía de La Juca en cualquier momento.</p>
       </div>
       <div class="radio-card mx-auto">
+        <div class="juca-player">
+          <div class="juca-track"><img id="jucaArt" src="assets/logo-la-juca.png" alt="Carátula de la canción"><div><small>SONANDO AHORA</small><h3 id="jucaTitle">La Juca</h3><p id="jucaArtist">Radio online</p></div></div>
+          <audio id="jucaAudio" preload="none" playsinline></audio>
+          <button type="button" id="jucaPlay" class="btn btn-juca btn-lg" aria-pressed="false">▶ Escuchar</button>
+          <p id="jucaStatus" role="status" aria-live="polite">Listo para escuchar</p>
+          <label for="jucaVolume">Volumen</label><input id="jucaVolume" type="range" min="0" max="1" step=".05" value="1">
+          <label for="jucaQuality">Calidad de audio</label><select id="jucaQuality" class="form-select"><option value="auto">Automática (48–192 kbps)</option><option value="hifi">Alta · 192 kbps</option><option value="midfi">Media · 96 kbps</option><option value="lofi">Económica · 48 kbps</option><option value="mp3">MP3 · 192 kbps</option></select>
+          <details id="jucaBackup"><summary>Reproductor de respaldo (Caster.fm)</summary>
         <div class="caster-wrap">
           <div class="caster-shell">
             <div data-type="newStreamPlayer" data-publicToken="df0f3c8e-a2e5-4857-92cc-63e767c8fbe0" data-theme="dark" data-color="e81e4d" data-channelId="" data-rendered="false" class="cstrEmbed">
@@ -98,8 +106,11 @@
             </div>
           </div>
         </div>
+
+          </details>
+        </div>
       </div>
-      <script src="https://cdn.cloud.caster.fm//widgets/embed.js"></script>
+
     </div>
   </section>
 
@@ -154,4 +165,4 @@
 
 <div id="iosInstall" class="install-sheet d-none"><div class="sheet-card"><button id="closeIos" class="sheet-close">×</button><strong>Instala La Juca en tu iPhone</strong><p>En Safari toca <b>Compartir</b> y luego <b>Agregar a pantalla de inicio</b>.</p></div></div>
 <footer class="footer"><div class="container d-flex flex-column flex-sm-row align-items-center justify-content-between gap-2"><img src="assets/logo-la-juca.png" alt="La Juca"><small>© <span id="year"></span> La Juca. Todos los derechos reservados.</small></div></footer>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script><script src="js/app.js"></script></body></html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script><script src="js/app.js"></script><script src="https://cdn.jsdelivr.net/npm/hls.js@1.6.13/dist/hls.min.js"></script><script src="js/artwork.js"></script><script src="js/player.js"></script></body></html>
