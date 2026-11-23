@@ -7,12 +7,13 @@ window.JucaArtwork = (() => {
   async function search(song) {
     const key = [song.artist,song.title,song.album].map(normalize).join("|");
     if (!song.artist || !song.title) return null;
-    if (cache.has(key)) return cache.get(key);
+    if (cache.has(key)) { const entry = cache.get(key); if (entry.until > Date.now()) return entry.task; cache.delete(key); }
     const task = (async () => {
       const wait = Math.max(0, 1200 - (Date.now() - lastRequest));
       lastRequest = Date.now() + wait;
       if (wait) await new Promise(r => setTimeout(r,wait));
-      const query = "recording:" + quote(song.title) + " AND artist:" + quote(song.artist);
+      const artists = String(song.artist).split(/,|\s+feat\.?\s+|\s+ft\.?\s+|\s+&\s+/i).map(a=>a.trim()).filter(Boolean);
+      const query = "recording:" + quote(song.title) + " AND (" + artists.map(a=>"artist:"+quote(a)).join(" OR ") + ")";
       const url = "https://musicbrainz.org/ws/2/recording/?fmt=json&limit=10&query=" + encodeURIComponent(query);
       const controller = new AbortController();
       const timer = setTimeout(() => controller.abort(), 10000);
@@ -23,7 +24,7 @@ window.JucaArtwork = (() => {
         const releases = [];
         for (const rec of data.recordings || []) {
           const artist = (rec["artist-credit"] || []).map(a => a.name || a.artist?.name || "").join(" ");
-          if (normalize(rec.title) !== normalize(song.title) || normalize(artist) !== normalize(song.artist)) continue;
+          if (normalize(rec.title) !== normalize(song.title) || !artists.some(a => (" "+normalize(artist)+" ").includes(" "+normalize(a)+" "))) continue;
           for (const release of rec.releases || []) {
             if (release.id) releases.push(release);
           }
@@ -37,7 +38,9 @@ window.JucaArtwork = (() => {
         return null;
       } catch (_) { return null; } finally { clearTimeout(timer); }
     })();
-    cache.set(key,task);
+    const entry = {task,until:Infinity};
+    cache.set(key,entry);
+    task.then(art => { entry.until = Date.now() + (art ? 3600000 : 60000); });
     if (cache.size > 100) cache.delete(cache.keys().next().value);
     return task;
   }
