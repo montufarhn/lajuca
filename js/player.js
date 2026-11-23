@@ -60,6 +60,7 @@
       try { navigator.mediaSession.setActionHandler(action, handler); } catch (_) {}
     }
   }
+  let artworkKey = null;
   async function metadata() {
     try {
       const response = await fetch(base + "/api/nowplaying/la_juca", {cache:"no-store", signal:AbortSignal.timeout ? AbortSignal.timeout(8000) : undefined});
@@ -67,10 +68,20 @@
       const data = await response.json(), song = data.now_playing?.song || {};
       $("jucaTitle").textContent = song.title || song.text || "La Juca";
       $("jucaArtist").textContent = song.artist || "Radio online";
-      let art = logo;
-      if (song.art) { const u = new URL(song.art, base); if (u.pathname.startsWith("/api/station/la_juca/art/")) art = base + u.pathname + u.search; else if (u.protocol === "https:" && u.hostname !== "localhost") art = u.href; }
-      $("jucaArt").src = art;
-      if ("mediaSession" in navigator && window.MediaMetadata) navigator.mediaSession.metadata = new MediaMetadata({title:song.title || "La Juca",artist:song.artist || "Radio online",artwork:[{src:art}]});
+      const key = JSON.stringify([song.artist,song.title,song.album]);
+      if (key !== artworkKey) {
+        artworkKey = key;
+        $("jucaArt").src = logo;
+        const updateMedia = art => {
+          if ("mediaSession" in navigator && window.MediaMetadata) navigator.mediaSession.metadata = new MediaMetadata({title:song.title || "La Juca",artist:song.artist || "Radio online",artwork:[{src:art}]});
+        };
+        updateMedia(logo);
+        if (window.JucaArtwork) window.JucaArtwork.search(song).then(art => {
+          if (key !== artworkKey || !art) return;
+          $("jucaArt").src = art;
+          updateMedia(art);
+        }).catch(() => {});
+      }
     } catch (_) { $("jucaArtist").textContent = "Radio online · Metadatos no disponibles"; }
   }
   $("jucaArt").addEventListener("error", () => { if ($("jucaArt").src !== logo) $("jucaArt").src = logo; });
